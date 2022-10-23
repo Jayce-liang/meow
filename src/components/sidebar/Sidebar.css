@@ -1,0 +1,12 @@
+.Sidebar {
+  height: 100vh;
+  width: 12rem;
+  padding: 4rem 1rem 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  border: 1px solid black;
+  text-align: center;
+  background-color: #fff;
+}
