@@ -10,7 +10,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #fff;
+  backdrop-filter: saturate(180%) blur(10px);
+  background-color: rgba(255, 255, 255, 0.72);
 }
 
 /* logo */
@@ -60,7 +61,7 @@
 }
 .btn-search {
   position: absolute;
-  top: .5rem;
+  top: 0.5rem;
   right: 1rem;
   background-color: transparent;
   border: none;
