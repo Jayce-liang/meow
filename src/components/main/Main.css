@@ -36,6 +36,7 @@
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  user-select: none;
 }
 .swiper-slide img {
   display: block;
@@ -53,30 +54,88 @@
   width: 0.3rem;
   height: 0.3rem;
   border-radius: 0;
-  margin: 2rem 0.4rem !important;
+  margin: 2rem 0.5rem !important;
   transition: all 0.2s;
-  opacity: 1;
-  background: antiquewhite;
+  opacity: 0.5;
+  background: #fff;
 }
 
 .swiper-pagination-bullet-active {
-  transform: scale(4, 2);
+  transform: scale(5, 2);
+  opacity: 1;
   background: orangered;
 }
 
 /* 小轮播图 */
 .innerSwiper {
   position: absolute;
-  top: 10%;
+  top: 5%;
   right: 10%;
   width: 10rem;
   height: 15rem;
   border-radius: 0.6rem;
 }
+
 .innerSwiper .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: brightness(1);
+}
+
+.myswiper-btn-container {
+  text-align: center;
+  transform: scale(2);
+  z-index: 1000;
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  right: 2rem;
+  bottom: 0;
+  margin: auto;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  
+  user-select: none;
+  --swiper-navigation-color: #fff; /* 单独设置按钮颜色 */
+  --swiper-navigation-size: 10px; /* 设置按钮大小 */
+}
+.swiper-button-prev {
+  left: -0.5rem;
+}
+.swiper-button-next {
+  right: -0.5rem;
+}
+
+/* 电影信息 */
+.movieInfo {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  bottom: -10rem;
+  left: 0;
+  z-index: 1;
+  color: #fff;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 3px;
+  /* background-color: #fff; */
+}
+.title {
+  font-size: 1.5rem;
+}
+.movieStatus {
+  opacity: 0.7;
+  margin: 1rem 0;
+}
+.stars {
+  font-size: 10px;
+  opacity: 0.7;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }

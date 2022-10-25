@@ -2,10 +2,11 @@ import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
-import { Autoplay, Pagination } from "swiper";
+import { Autoplay, Pagination, Navigation } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 // Main 组件样式
 import "./Main.css";
 
@@ -17,8 +18,9 @@ export default function Main() {
       return '<span class="' + className + '"></span>';
     },
   };
-  const [swiper, setSwiper] = React.useState(null);
-  console.log(swiper);
+  const [innerSwiper, setInnerSwiper] = React.useState(null);
+  const [bigSwiper, setBigSwiper] = React.useState(null);
+  // console.log(swiper);
   return (
     <div className="Main">
       <div className="swiper-container bigSwiper">
@@ -26,7 +28,6 @@ export default function Main() {
         <Swiper
           className="bigSwiper"
           modules={[Autoplay, Pagination]}
-          grabCursor={true}
           autoplay={{
             delay: 3000,
             // 用户操作后不继续 autoplay
@@ -36,26 +37,43 @@ export default function Main() {
           }}
           pagination={pagination}
           loop={true}
+          grabCursor={true}
           onSlideChange={function () {
             try {
-              swiper.slideTo(this.activeIndex);
+              setBigSwiper(this);
+              innerSwiper.slideTo(this.activeIndex);
             } catch (error) {}
           }}
         >
           <SwiperSlide>
-            <img src="images/6.2.jpg" alt="" />
+            <img
+              src="https://dd-static.jd.com/ddimg/jfs/t1/75563/33/21297/459246/633bbac8E7fdc707f/c0f01f86043043ce.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="images/6.3.jpg" alt="" />
+            <img
+              src="https://dd-static.jd.com/ddimg/jfs/t1/73339/39/22768/219331/635242d9Eb206251f/4ff4c743dbbc7f9f.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="images/6.4.jpg" alt="" />
+            <img
+              src="https://dd-static.jd.com/ddimg/jfs/t1/108368/22/33883/268459/63309301E8a2dcb57/e7dd069f028828c0.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="images/6.5.jpg" alt="" />
+            <img
+              src="https://dd-static.jd.com/ddimg/jfs/t1/17504/27/19390/266005/6340e89aE95cb62dc/cb305d25debe1a54.jpg"
+              alt=""
+            />
           </SwiperSlide>
           <SwiperSlide>
-            <img src="images/6.6.jpg" alt="" />
+            <img
+              src="https://dd-static.jd.com/ddimg/jfs/t1/171019/32/30298/199398/6329e9f5E62b50bfd/c82da65da9648ba4.jpg"
+              alt=""
+            />
           </SwiperSlide>
         </Swiper>
 
@@ -63,38 +81,78 @@ export default function Main() {
         <div className="innerSwiper">
           <Swiper
             className="innerSwiper"
-            modules={[Autoplay, Pagination]}
-            spaceBetween={1}
-            slidesPerView={1}
-            autoplay={{
-              delay: 3000,
-              // 用户操作后不继续 autoplay
-              disableOnInteraction: false,
-              // 是否停在最后一个 slide
-              stopOnLastSlide: false,
+            modules={[Autoplay, Navigation]}
+            // 按钮
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
             }}
-            grabCursor={true}
+            // 当 noSwiping={true}时 ，在 SwiperSlide 添加类名 swiper-no-swiping ，则该slide不能拖动
+            noSwiping={true}
             onSwiper={(s) => {
-              setSwiper(s);
+              setInnerSwiper(s);
             }}
             loop={true}
           >
-            <SwiperSlide>
-              <img src="images/6.2.jpg" alt="" />
+            <SwiperSlide className="swiper-no-swiping">
+              <img
+                src="https://dd-static.jd.com/ddimg/jfs/t1/75563/33/21297/459246/633bbac8E7fdc707f/c0f01f86043043ce.jpg"
+                alt=""
+              />
             </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/6.3.jpg" alt="" />
+            <SwiperSlide className="swiper-no-swiping">
+              <img
+                src="https://dd-static.jd.com/ddimg/jfs/t1/73339/39/22768/219331/635242d9Eb206251f/4ff4c743dbbc7f9f.jpg"
+                alt=""
+              />
             </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/6.4.jpg" alt="" />
+            <SwiperSlide className="swiper-no-swiping">
+              <img
+                src="https://dd-static.jd.com/ddimg/jfs/t1/108368/22/33883/268459/63309301E8a2dcb57/e7dd069f028828c0.jpg"
+                alt=""
+              />
             </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/6.5.jpg" alt="" />
+            <SwiperSlide className="swiper-no-swiping">
+              <img
+                src="https://dd-static.jd.com/ddimg/jfs/t1/17504/27/19390/266005/6340e89aE95cb62dc/cb305d25debe1a54.jpg"
+                alt=""
+              />
             </SwiperSlide>
-            <SwiperSlide>
-              <img src="images/6.6.jpg" alt="" />
+            <SwiperSlide className="swiper-no-swiping">
+              <img
+                src="https://dd-static.jd.com/ddimg/jfs/t1/171019/32/30298/199398/6329e9f5E62b50bfd/c82da65da9648ba4.jpg"
+                alt=""
+              />
             </SwiperSlide>
           </Swiper>
+          <div className="myswiper-btn-container">
+            {/* 小轮播图按钮 */}
+            <div
+              className="swiper-button-prev"
+              // 点击按钮时，大轮播图同时变化
+              onClick={() => {
+                try {
+                  bigSwiper.slideTo(innerSwiper.activeIndex);
+                } catch (error) {}
+              }}
+            ></div>
+            <div
+              className="swiper-button-next"
+              onClick={() => {
+                try {
+                  bigSwiper.slideTo(innerSwiper.activeIndex);
+                } catch (error) {}
+              }}
+            ></div>
+          </div>
+          {/* 电影信息 */}
+          <div className="movieInfo">
+            <div className="title">鬼吹灯</div>
+            <div className="movieStatus">已完结</div>
+            <div className="stars">
+              陈宝国,王千源,李庚希,胡先煦,荣梓杉,郭涛,梁静,颜丙燕,王骁,曹曦文,蓝盈莹,翟小兴,张瑞涵,荣飞,李添诺
+            </div>
+          </div>
         </div>
       </div>
     </div>
