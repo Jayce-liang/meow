@@ -17,8 +17,8 @@ export default function Header() {
   // 消息框
   const [open, setOpen] = React.useState(false);
 
-  const vertical = "bottom";
-  const horizontal = "left";
+  const vertical = "top";
+  const horizontal = "center";
   const handleAlertClick = () => {
     setOpen(true);
   };
