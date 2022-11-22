@@ -10,7 +10,10 @@ import "swiper/css/navigation";
 // Main 组件样式
 import "./Main.css";
 
-export default function Main() {
+import elements from "../../routes";
+import { useRoutes } from "react-router-dom";
+export default function Main(props) {
+  const routes = useRoutes(elements);
   // 自定义
   const pagination = {
     clickable: true,
@@ -48,12 +51,6 @@ export default function Main() {
           <SwiperSlide>
             <img
               src="https://dd-static.jd.com/ddimg/jfs/t1/75563/33/21297/459246/633bbac8E7fdc707f/c0f01f86043043ce.jpg"
-              alt=""
-            />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img
-              src="https://dd-static.jd.com/ddimg/jfs/t1/73339/39/22768/219331/635242d9Eb206251f/4ff4c743dbbc7f9f.jpg"
               alt=""
             />
           </SwiperSlide>
@@ -97,12 +94,6 @@ export default function Main() {
             <SwiperSlide className="swiper-no-swiping">
               <img
                 src="https://dd-static.jd.com/ddimg/jfs/t1/75563/33/21297/459246/633bbac8E7fdc707f/c0f01f86043043ce.jpg"
-                alt=""
-              />
-            </SwiperSlide>
-            <SwiperSlide className="swiper-no-swiping">
-              <img
-                src="https://dd-static.jd.com/ddimg/jfs/t1/73339/39/22768/219331/635242d9Eb206251f/4ff4c743dbbc7f9f.jpg"
                 alt=""
               />
             </SwiperSlide>
@@ -155,6 +146,7 @@ export default function Main() {
           </div>
         </div>
       </div>
+      {routes}
     </div>
   );
 }

@@ -17,6 +17,7 @@ export default function Header() {
   // 消息框
   const [open, setOpen] = React.useState(false);
 
+  // 消息框弹出位置
   const vertical = "top";
   const horizontal = "center";
   const handleAlertClick = () => {
@@ -33,6 +34,7 @@ export default function Header() {
 
   // 提交表单
   function submit(e) {
+    // 取消默认事件
     e.stopPropagation();
     e.preventDefault();
     const value = keyword.current.value;
@@ -42,11 +44,11 @@ export default function Header() {
   }
   return (
     <div className="Header">
-      {/* logo */}
+      {/* 网页logo */}
       <div className="logo-container">
         <img className="logo" src="logo.png" alt="logo" />
       </div>
-      {/* search */}
+      {/*搜索框 search */}
       <div className="search-container">
         <form className="search-form" onSubmit={submit}>
           <input
@@ -62,7 +64,7 @@ export default function Header() {
           </button>
         </form>
       </div>
-      {/* history */}
+      {/* 观看记录history */}
       <div className="history">
         <AccessTimeOutlinedIcon
           sx={{ color: "grey", fontSize: 20 }}
